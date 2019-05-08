@@ -14,8 +14,7 @@ exports.up = function (knex, Promise) {
             .unique();
 
         tbl
-            .string('department', 255)
-            .notNullable();
+            .string('department', 255);
     })
 };
 
