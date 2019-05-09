@@ -1,23 +1,38 @@
 import React from 'react';
+import axios from 'axios';
 
 class Login extends React.Component {
 	state = {
 		username: '',
-		password: '',
+		password: ''
 	};
 
 	handleChange = e => {
 		const { id, value } = e.target;
 		this.setState({
-			[id]: value,
+			[id]: value
 		});
+	};
+
+	login = e => {
+		e.preventDefault();
+		const baseUrl = 'http://localhost:4000/api';
+		axios
+			.post(`${baseUrl}/auth/login`, this.state)
+			.then(res => {
+				localStorage.setItem('jwt', res.data.token);
+				console.log(res);
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	};
 
 	render() {
 		return (
 			<div>
 				<h2>Login</h2>
-				<form action=''>
+				<form onSubmit={this.login}>
 					<div>
 						<label htmlFor='username' />
 						<input
@@ -37,7 +52,7 @@ class Login extends React.Component {
 						/>
 					</div>
 					<div>
-						<button type='submit'>Submit</button>
+						<button type='submit'>Login</button>
 					</div>
 				</form>
 			</div>
