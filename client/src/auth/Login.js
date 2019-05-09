@@ -6,28 +6,35 @@ class Login extends React.Component {
 		password: '',
 	};
 
+	handleChange = e => {
+		const { id, value } = e.target;
+		this.setState({
+			[id]: value,
+		});
+	};
+
 	render() {
 		return (
 			<div>
 				<h2>Login</h2>
 				<form action=''>
 					<div>
-						<label
-							htmlFor='username'
+						<label htmlFor='username' />
+						<input
+							type='text'
 							id='username'
 							onChange={this.handleChange}
 							value={this.state.username}
 						/>
-						<input type='text' />
 					</div>
 					<div>
-						<label
-							htmlFor='password'
+						<label htmlFor='password' />
+						<input
+							type='password'
 							id='password'
 							onChange={this.handleChange}
 							value={this.state.password}
 						/>
-						<input type='text' />
 					</div>
 					<div>
 						<button type='submit'>Submit</button>
