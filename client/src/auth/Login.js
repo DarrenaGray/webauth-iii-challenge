@@ -20,8 +20,9 @@ class Login extends React.Component {
 		axios
 			.post(`${baseUrl}/auth/login`, this.state)
 			.then(res => {
-				localStorage.setItem('jwt', res.data.token);
 				console.log(res);
+				localStorage.setItem('jwt', res.data.token);
+				this.props.history.push('/users');
 			})
 			.catch(err => {
 				console.log(err);
