@@ -8,6 +8,11 @@ class UsersList extends React.Component {
 		users: []
 	};
 
+	logout = () => {
+		localStorage.removeItem('jwt');
+		this.props.history.push('/login');
+	};
+
 	componentDidMount() {
 		console.log('Mounting users...');
 		const baseUrl = 'http://localhost:4000/api';
@@ -34,6 +39,7 @@ class UsersList extends React.Component {
 						<p>{user.username}</p>
 					</div>
 				))}
+				<button onClick={this.logout}>Logout</button>
 			</div>
 		);
 	}
