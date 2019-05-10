@@ -15,6 +15,7 @@ function App() {
 				<NavLink to='/signup'>SignUp</NavLink>
 				<NavLink to='/login'>Login</NavLink>
 			</div>
+			<h1>React App</h1>
 			<Route exact path='/users' component={UsersList} />
 			<Route path='/signup' component={SignUp} />
 			<Route path='/login' component={Login} />
