@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
 const Users = require('./users-model');
+const restricted = require('../auth/restricted-middleware');
 
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
 	Users.getUsers()
 		.then(users => {
 			if (users.length !== 0) {
@@ -12,12 +13,10 @@ router.get('/', (req, res) => {
 			}
 		})
 		.catch(err => {
-			res
-				.status(500)
-				.json({
-					err,
-					message: 'There was a problem retrieving the users.'
-				});
+			res.status(500).json({
+				err,
+				message: 'There was a problem retrieving the users.'
+			});
 		});
 });
 
