@@ -16,9 +16,8 @@ class Login extends React.Component {
 
 	login = e => {
 		e.preventDefault();
-		const baseUrl = 'http://localhost:4000/api';
 		axios
-			.post(`${baseUrl}/auth/login`, this.state)
+			.post(`/auth/login`, this.state) // Refer to requiresAuth component for base url
 			.then(res => {
 				console.log(res);
 				localStorage.setItem('jwt', res.data.token);

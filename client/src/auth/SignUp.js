@@ -16,9 +16,8 @@ class SignUp extends React.Component {
 
 	signUp = e => {
 		e.preventDefault();
-		const baseUrl = 'http://localhost:4000/api';
 		axios
-			.post(`${baseUrl}/auth/register`, this.state)
+			.post('/auth/register', this.state) // Refer to requiresAuth component for base url
 			.then(res => {
 				localStorage.setItem('jwt', res.data.token);
 				this.props.history.push('/users');

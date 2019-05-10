@@ -15,9 +15,8 @@ class UsersList extends React.Component {
 
 	componentDidMount() {
 		console.log('Mounting users...');
-		const baseUrl = 'http://localhost:4000/api';
 		axios
-			.get(`${baseUrl}/users`)
+			.get('/users') // Refer to requiresAuth component for base url
 			.then(res => {
 				console.log(res);
 				this.setState({
